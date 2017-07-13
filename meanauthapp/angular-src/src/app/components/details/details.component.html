@@ -1,0 +1,41 @@
+<form #userForm="ngForm" (ngSubmit)="onDetailSubmit(userForm.value)" novalidate>
+  <h3>Personal Details</h3>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" #nameRef="ngModel" ngModel minlength="4" maxlength="25" name="name"  class="form-control" placeholder="Enter Full name" required>
+    <div *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class="alert alert-danger">
+      <div [hidden]="!nameRef.errors.required">
+        please enter the name
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Address</label>
+    <input type="text" ngModel name="Address" required class="form-control" placeholder="Street No/Street_name/City/State/pincode">
+  </div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" ngModel name="email" required class="form-control" placeholder="Enter email">
+  </div>
+<h3>Educational Qualification</h3>
+  <div ngModelGroup="qualification"> 
+    <div>
+      <label>Collage Details</label>
+    <input type="text" ngModel name="collage" required class="form-control" placeholder="Please enter your collage details">
+    </div>
+
+    <div>
+      <label>12 Class Details</label>
+    <input type="text" ngModel name="twelve" required class="form-control" placeholder="Please enter your 12 details">
+    </div>
+    <div>
+      <label>Matric Class Details</label>
+    <input type="text" ngModel name="matric" required class="form-control"placeholder="Please enter your matric details">
+    </div>
+
+  </div>
+  <input type="submit" class="btn btn-primary" value="Submit">
+
+</form>
+<button (click)="download()">CLick here to download </button>
